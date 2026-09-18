@@ -1,16 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors · Battle for Humanity</title>
-</head>
-<body>
-    <!-- 
-      UI functions loaded first (formatting, console boxes, alerts).
-      Core game logic loaded second (rules, input, main loop).
-    -->
-    <script src="js/ui.js"></script>
+    <meta
+      name="description"
+      content="Rock Paper Scissors game with a button-based interface and live score tracking."
+    />
+    <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="game" aria-labelledby="game-title">
+        <header class="game__header">
+          <p class="eyebrow">Arcade challenge</p>
+          <h1 id="game-title">Rock, Paper, Scissors</h1>
+        </header>
+
+        <div class="scoreboard" aria-live="polite" aria-atomic="true">
+          <div class="scoreboard__item">
+            <span class="scoreboard__label">Player</span>
+            <strong class="scoreboard__value" id="player-score">0</strong>
+          </div>
+          <div class="scoreboard__item">
+            <span class="scoreboard__label">Computer</span>
+            <strong class="scoreboard__value" id="computer-score">0</strong>
+          </div>
+        </div>
+
+        <div class="controls" aria-label="Choose a move">
+          <button type="button" class="choice-button" data-choice="Rock">
+            Rock
+          </button>
+          <button type="button" class="choice-button" data-choice="Paper">
+            Paper
+          </button>
+          <button type="button" class="choice-button" data-choice="Scissors">
+            Scissors
+          </button>
+        </div>
+
+        <div class="status-panel" id="game-status" aria-live="polite">
+          First to 5 points wins.
+        </div>
+
+        <section class="results" aria-live="polite" aria-atomic="true">
+          <h2>Round result</h2>
+          <p class="results__message" id="result-message">
+            Make your choice to begin.
+          </p>
+          <p class="results__detail" id="result-detail">
+            The winner will be announced when someone reaches 5 points.
+          </p>
+        </section>
+      </section>
+    </main>
+
     <script src="js/core.js"></script>
-</body>
+    <script src="js/ui.js"></script>
+  </body>
 </html>
