@@ -53,4 +53,3 @@ function playRound(playerSelection, computerSelection = computerPlay()) {
     computerSelection,
   };
 }
-

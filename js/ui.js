@@ -32,7 +32,8 @@ function renderRoundResult(roundResult) {
 function endGame(winner) {
   gameState.isGameOver = true;
 
-  const winnerText = winner === 'player' ? 'You win the game!' : 'Computer wins the game!';
+  const winnerText =
+    winner === 'player' ? 'You win the game!' : 'Computer wins the game!';
   setStatus(winnerText, winner === 'player' ? 'win' : 'lose');
   ui.resultMessage.textContent = winnerText;
   ui.resultDetail.textContent = `Final score: Player ${gameState.playerScore} - ${gameState.computerScore} Computer.`;
