@@ -14,46 +14,80 @@
     <main class="app">
       <section class="game" aria-labelledby="game-title">
         <header class="game__header">
-          <p class="eyebrow">Arcade challenge</p>
+          <div class="game__topline">
+            <p class="eyebrow">Arcade challenge</p>
+            <button
+              type="button"
+              class="help-button"
+              aria-expanded="false"
+              aria-controls="help-panel"
+            >
+              Help
+            </button>
+          </div>
           <h1 id="game-title">Rock, Paper, Scissors</h1>
         </header>
 
         <div class="scoreboard" aria-live="polite" aria-atomic="true">
           <div class="scoreboard__item">
-            <span class="scoreboard__label">Player</span>
+            <span class="scoreboard__label">You</span>
             <strong class="scoreboard__value" id="player-score">0</strong>
           </div>
           <div class="scoreboard__item">
-            <span class="scoreboard__label">Computer</span>
+            <span class="scoreboard__label">CPU</span>
             <strong class="scoreboard__value" id="computer-score">0</strong>
           </div>
         </div>
 
+        <div class="battle" aria-live="polite" aria-atomic="true">
+          <div class="battle-card">
+            <span class="battle-card__label">You</span>
+            <div class="battle-card__icon" id="player-pick" aria-label="Your move">
+              ?
+            </div>
+          </div>
+
+          <div class="battle-card battle-card--vs" aria-hidden="true">VS</div>
+
+          <div class="battle-card">
+            <span class="battle-card__label">CPU</span>
+            <div class="battle-card__icon" id="computer-pick" aria-label="Computer move">
+              ?
+            </div>
+          </div>
+        </div>
+
         <div class="controls" aria-label="Choose a move">
-          <button type="button" class="choice-button" data-choice="Rock">
+          <button type="button" class="choice-button" data-choice="Rock" aria-label="Play rock">
             Rock
           </button>
-          <button type="button" class="choice-button" data-choice="Paper">
+          <button type="button" class="choice-button" data-choice="Paper" aria-label="Play paper">
             Paper
           </button>
-          <button type="button" class="choice-button" data-choice="Scissors">
+          <button type="button" class="choice-button" data-choice="Scissors" aria-label="Play scissors">
             Scissors
           </button>
         </div>
 
         <div class="status-panel" id="game-status" aria-live="polite">
-          First to 5 points wins.
+          First to 5 wins
         </div>
 
         <section class="results" aria-live="polite" aria-atomic="true">
-          <h2>Round result</h2>
-          <p class="results__message" id="result-message">
-            Make your choice to begin.
-          </p>
+          <p class="results__message" id="result-message">Ready?</p>
           <p class="results__detail" id="result-detail">
-            The winner will be announced when someone reaches 5 points.
+            Pick a move to start.
           </p>
         </section>
+
+        <aside class="help-panel" id="help-panel" hidden>
+          <h2>Rules</h2>
+          <ul>
+            <li>Rock beats scissors</li>
+            <li>Scissors beats paper</li>
+            <li>Paper beats rock</li>
+          </ul>
+        </aside>
       </section>
     </main>
 

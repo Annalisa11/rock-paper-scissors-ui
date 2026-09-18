@@ -4,10 +4,11 @@
   --panel-alt: #0f172a;
   --text: #f8fafc;
   --muted: #cbd5e1;
-  --accent: #22c55e;
   --border: rgba(148, 163, 184, 0.2);
-  --danger: #ef4444;
   --warning: #fbbf24;
+  --success: #22c55e;
+  --danger: #ef4444;
+  --shadow: rgba(15, 23, 42, 0.45);
 }
 
 * {
@@ -24,6 +25,10 @@ body {
   color: var(--text);
 }
 
+button {
+  font: inherit;
+}
+
 .app {
   width: min(90vw, 700px);
 }
@@ -33,7 +38,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 20px;
   padding: 2rem;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.45);
+  box-shadow: 0 20px 50px var(--shadow);
 }
 
 .game__header {
@@ -41,17 +46,34 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.game__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .eyebrow {
-  margin: 0 0 0.5rem;
+  margin: 0;
   text-transform: uppercase;
   letter-spacing: 0.12em;
-  font-size: 0.75rem;
+  font-size: 0.72rem;
   color: var(--muted);
 }
 
 h1 {
   margin: 0;
   font-size: clamp(2rem, 5vw, 3rem);
+}
+
+.help-button {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
 }
 
 .scoreboard {
@@ -71,7 +93,7 @@ h1 {
 
 .scoreboard__label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: var(--muted);
@@ -83,11 +105,66 @@ h1 {
   font-weight: 700;
 }
 
+.battle {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.battle-card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+  text-align: center;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.battle-card--vs {
+  min-width: 68px;
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.battle-card__label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 0.75rem;
+}
+
+.battle-card__icon {
+  width: 100px;
+  height: 100px;
+  display: grid;
+  place-items: center;
+  color: var(--text);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.12), rgba(15, 23, 42, 0.2));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.battle-card__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(15, 23, 42, 0.35));
+}
+
 .controls {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .choice-button {
@@ -96,9 +173,9 @@ h1 {
   border-radius: 14px;
   background: linear-gradient(180deg, #1e293b, #0f172a);
   color: var(--text);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 700;
-  padding: 1rem 0.75rem;
+  padding: 0.95rem 0.75rem;
   cursor: pointer;
   transition:
     transform 0.15s ease,
@@ -121,7 +198,8 @@ h1 {
 }
 
 .status-panel,
-.results {
+.results,
+.help-panel {
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -134,29 +212,53 @@ h1 {
   color: var(--warning);
 }
 
-.results h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.1rem;
+.results {
+  margin-bottom: 1rem;
 }
 
 .results__message,
 .results__detail {
   margin: 0;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .results__message {
   font-weight: 700;
+  font-size: 1.1rem;
 }
 
 .results__detail {
   color: var(--muted);
+  margin-top: 0.45rem;
+}
+
+.help-panel {
   margin-top: 0.5rem;
+}
+
+.help-panel h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+}
+
+.help-panel ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--muted);
+  line-height: 1.7;
 }
 
 @media (max-width: 540px) {
   .game {
     padding: 1.25rem;
+  }
+
+  .battle {
+    grid-template-columns: 1fr;
+  }
+
+  .battle-card--vs {
+    min-height: 0;
   }
 
   .controls {
