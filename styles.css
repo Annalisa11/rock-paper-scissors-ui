@@ -79,7 +79,9 @@ h1 {
   color: var(--text);
   padding: 0.45rem 0.9rem;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
 }
 
 .help-button:hover,
@@ -160,7 +162,11 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: 20px;
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(34, 211, 238, 0.12));
+  background: linear-gradient(
+    135deg,
+    rgba(139, 92, 246, 0.18),
+    rgba(34, 211, 238, 0.12)
+  );
   border: 1px solid rgba(139, 92, 246, 0.22);
   font-size: clamp(3rem, 6vw, 4rem);
   line-height: 1;
