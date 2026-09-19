@@ -1,1 +1,1 @@
-Deployed in: https://amal-thomas-dev.github.io/rock-paper-scissors-js/
+Deployed in: https://annalisa11.github.io/rock-paper-scissors-ui/
