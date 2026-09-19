@@ -11,45 +11,54 @@ function computerPlay() {
 }
 
 function playRound(playerSelection, computerSelection = computerPlay()) {
-  const normalizedSelection = playerSelection.trim();
+  
+  if (
+    typeof playerSelection !== 'string' ||
+    typeof computerSelection !== 'string'
+  ) {
+    throw new TypeError("Selections must be strings.");
+  }
 
-  if (!VALID_CHOICES.includes(normalizedSelection)) {
+  const player = playerSelection.trim();
+  const computer = computerSelection.trim();
+  
+  if (!VALID_CHOICES.includes(player)) {
     throw new Error(
       `Invalid player selection: "${playerSelection}". Choose Rock, Paper, or Scissors.`,
     );
   }
 
-  if (!VALID_CHOICES.includes(computerSelection)) {
+  if (!VALID_CHOICES.includes(computer)) {
     throw new Error(
       `Invalid computer selection: "${computerSelection}". Choose Rock, Paper, or Scissors.`,
     );
   }
 
-  if (playerSelection === computerSelection) {
+  if (player === computer) {
     return {
       outcome: 'draw',
       title: 'Draw!',
-      detail: `Both players chose ${playerSelection}.`,
-      playerSelection,
-      computerSelection,
+      detail: `Both players chose ${player}.`,
+      playerSelection: player,
+      computerSelection: computer,
     };
   }
 
-  if (WIN_CONDITIONS[playerSelection] === computerSelection) {
+  if (WIN_CONDITIONS[player] === computer) {
     return {
       outcome: 'player',
       title: 'You win!',
-      detail: `${playerSelection} beats ${computerSelection}.`,
-      playerSelection,
-      computerSelection,
+      detail: `${player} beats ${computer}.`,
+      playerSelection: player,
+      computerSelection: computer,
     };
   }
 
   return {
     outcome: 'computer',
     title: 'Computer wins!',
-    detail: `${computerSelection} beats ${playerSelection}.`,
-    playerSelection,
-    computerSelection,
+    detail: `${computer} beats ${player}.`,
+    playerSelection: player,
+    computerSelection: computer,
   };
 }
