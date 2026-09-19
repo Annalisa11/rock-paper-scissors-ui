@@ -1,14 +1,17 @@
 :root {
-  --bg: #111827;
-  --panel: #1f2937;
-  --panel-alt: #0f172a;
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --border: rgba(148, 163, 184, 0.2);
-  --warning: #fbbf24;
-  --success: #22c55e;
-  --danger: #ef4444;
-  --shadow: rgba(15, 23, 42, 0.45);
+  --bg: #0d1117;
+  --panel: #121a24;
+  --panel-alt: #0b1016;
+  --text: #edf2f7;
+  --muted: #a7b3c2;
+  --border: rgba(148, 163, 184, 0.16);
+  --warning: #ffbf69;
+  --success: #4ade80;
+  --danger: #f87171;
+  --shadow: rgba(2, 6, 23, 0.42);
+  --accent: #8b5cf6;
+  --accent-2: #22d3ee;
+  --accent-3: #f59e0b;
 }
 
 * {
@@ -21,7 +24,9 @@ body {
   display: grid;
   place-items: center;
   font-family: Arial, Helvetica, sans-serif;
-  background: linear-gradient(135deg, var(--bg), var(--panel-alt));
+  background:
+    radial-gradient(circle at top, rgba(139, 92, 246, 0.2), transparent 30%),
+    linear-gradient(135deg, var(--bg), var(--panel-alt));
   color: var(--text);
 }
 
@@ -34,11 +39,11 @@ button {
 }
 
 .game {
-  background: rgba(17, 24, 39, 0.9);
+  background: rgba(18, 26, 36, 0.96);
   border: 1px solid var(--border);
-  border-radius: 20px;
+  border-radius: 22px;
   padding: 2rem;
-  box-shadow: 0 20px 50px var(--shadow);
+  box-shadow: 0 22px 48px var(--shadow);
 }
 
 .game__header {
@@ -70,10 +75,17 @@ h1 {
 .help-button {
   border: 1px solid var(--border);
   border-radius: 999px;
-  background: transparent;
+  background: rgba(139, 92, 246, 0.12);
   color: var(--text);
   padding: 0.45rem 0.9rem;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.help-button:hover,
+.help-button:focus-visible {
+  background: rgba(139, 92, 246, 0.2);
+  transform: translateY(-1px);
 }
 
 .scoreboard {
@@ -84,9 +96,9 @@ h1 {
 }
 
 .scoreboard__item {
-  background: var(--panel);
+  background: rgba(15, 23, 32, 0.9);
   border: 1px solid var(--border);
-  border-radius: 14px;
+  border-radius: 16px;
   padding: 1rem;
   text-align: center;
 }
@@ -113,9 +125,9 @@ h1 {
 }
 
 .battle-card {
-  background: var(--panel);
+  background: rgba(15, 23, 32, 0.9);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 1rem;
   text-align: center;
   min-height: 180px;
@@ -148,12 +160,8 @@ h1 {
   display: grid;
   place-items: center;
   border-radius: 20px;
-  background: linear-gradient(
-    180deg,
-    rgba(148, 163, 184, 0.12),
-    rgba(15, 23, 42, 0.2)
-  );
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.18), rgba(34, 211, 238, 0.12));
+  border: 1px solid rgba(139, 92, 246, 0.22);
   font-size: clamp(3rem, 6vw, 4rem);
   line-height: 1;
   user-select: none;
@@ -168,9 +176,9 @@ h1 {
 
 .choice-button {
   appearance: none;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 14px;
-  background: linear-gradient(180deg, #1e293b, #0f172a);
+  background: #1b2430;
   color: var(--text);
   font-size: 1.05rem;
   font-weight: 700;
@@ -184,9 +192,9 @@ h1 {
 
 .choice-button:hover,
 .choice-button:focus-visible {
-  transform: translateY(-1px);
-  border-color: rgba(34, 197, 94, 0.8);
-  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(34, 211, 238, 0.8);
+  box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
 }
 
 .choice-button:disabled {
@@ -199,7 +207,7 @@ h1 {
 .status-panel,
 .results,
 .help-panel {
-  background: var(--panel);
+  background: rgba(15, 23, 32, 0.8);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 1rem 1.25rem;
